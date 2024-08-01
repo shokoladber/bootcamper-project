@@ -1,4 +1,4 @@
-package com.organization.mvcproject.MGL_Task1.service;
+package com.organization.mvcproject.service;
 
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.organization.mvcproject.MGL_Task1.model.Game;
+import com.organization.mvcproject.model.Game;
 import com.organization.mvcproject.config.MvcConfiguration;
 
 @RunWith(JUnitPlatform.class)

@@ -1,7 +1,7 @@
-package com.organization.mvcproject.mgltask1.controller;
+package com.organization.mvcproject.controller;
 
-import com.organization.mvcproject.MGL_Task1.model.Game;
-import com.organization.mvcproject.MGL_Task1.service.GameService;
+import com.organization.mvcproject.model.Game;
+import com.organization.mvcproject.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,13 +19,13 @@ public class RestController {
     private GameService gameService;
 
     //TODO 1.0 RequestMapping URL should follow RESTful.
-    @RequestMapping(value = "/game/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/gamesLibrary", method = RequestMethod.GET)
     public ResponseEntity<List<Game>> fetchAllGames() {
         return new ResponseEntity<List<Game>>(gameService.retrieveAllGames(), HttpStatus.OK);
     }
 
     //TODO 1.0 RequestMapping URL should follow RESTful convention
-    @RequestMapping(value = "/game/createGame", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/games", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createGame(@RequestBody Game game) {
         gameService.saveGame(game);
         return new ResponseEntity<Void>(HttpStatus.CREATED);

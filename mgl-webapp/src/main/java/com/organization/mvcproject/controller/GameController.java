@@ -1,5 +1,5 @@
 //TODO 1.0   package naming convention, improve package declaration
-package com.organization.mvcproject.mgltask1.controller;
+package com.organization.mvcproject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.organization.mvcproject.MGL_Task1.model.Game;
-import com.organization.mvcproject.MGL_Task1.model.Review;
-import com.organization.mvcproject.MGL_Task1.service.GameService;
+import com.organization.mvcproject.model.Game;
+import com.organization.mvcproject.model.Review;
+import com.organization.mvcproject.service.GameService;
 
 //TODO 1.0  follow java class naming, improve class name
 @Controller
-public class MGLTask1Controller {
+public class GameController {
 
 	//TODO 1.0 variable naming convention, improve reference name
 	@Autowired
