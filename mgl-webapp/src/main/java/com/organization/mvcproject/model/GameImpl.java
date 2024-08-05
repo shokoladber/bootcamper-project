@@ -1,14 +1,11 @@
 package com.organization.mvcproject.model;
 
+import com.organization.mvcproject.api.model.Game;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Game {
+public class GameImpl implements Game {
 
-	/**
-	 * TODO 1.0 java object member variable naming convention declared here are not object oriented,
-	 *  rename the variables, and their setter/getter methods to match convention. 
-	 */
 	private Long id;
 	private String name;
 	private String genre;

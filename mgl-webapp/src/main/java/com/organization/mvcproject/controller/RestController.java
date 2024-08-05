@@ -1,7 +1,7 @@
 package com.organization.mvcproject.controller;
 
-import com.organization.mvcproject.model.Game;
-import com.organization.mvcproject.service.GameService;
+import com.organization.mvcproject.model.GameImpl;
+import com.organization.mvcproject.api.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,19 +16,17 @@ import java.util.List;
 public class RestController {
 
     @Autowired
-    private GameService gameService;
+    private GameService gameServiceImpl;
 
-    //TODO 1.0 RequestMapping URL should follow RESTful.
     @RequestMapping(value = "/gamesLibrary", method = RequestMethod.GET)
-    public ResponseEntity<List<Game>> fetchAllGames() {
-        return new ResponseEntity<List<Game>>(gameService.retrieveAllGames(), HttpStatus.OK);
+    public ResponseEntity<List<GameImpl>> fetchAllGames() {
+        return new ResponseEntity<>(gameServiceImpl.retrieveAllGames(), HttpStatus.OK);
     }
 
-    //TODO 1.0 RequestMapping URL should follow RESTful convention
     @RequestMapping(value = "/games", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> createGame(@RequestBody Game game) {
-        gameService.saveGame(game);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+    public ResponseEntity<Void> createGame(@RequestBody GameImpl game) {
+        gameServiceImpl.saveGame(game);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }
