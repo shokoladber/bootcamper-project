@@ -8,10 +8,12 @@ public interface GameDAO {
 
     List<GameImpl> findAllGames();
 
+    List<GameImpl> findGamesByGenre(String genre);
+
     GameImpl findGameById(Long id);
 
     void deleteGame(Long id);
 
-    GameImpl saveGame(GameImpl game);
+    void saveGame(GameImpl game);
 
 }

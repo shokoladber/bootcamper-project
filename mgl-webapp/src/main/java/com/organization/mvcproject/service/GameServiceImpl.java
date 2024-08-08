@@ -2,11 +2,9 @@ package com.organization.mvcproject.service;
 
 import com.organization.mvcproject.api.dao.GameDAO;
 import com.organization.mvcproject.api.service.GameService;
-import com.organization.mvcproject.dao.GameDAOImpl;
 import com.organization.mvcproject.model.GameImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -21,14 +19,19 @@ public class GameServiceImpl implements GameService {
 	}
 
 	@Override
-	public GameImpl saveGame(GameImpl game) {
-		return gameDAOImpl.saveGame(game);
+	public List<GameImpl> retrieveGamesByGenre(String genre) {
+		return gameDAOImpl.findGamesByGenre(genre);
 	}
 
 	@Override
-	public Void deleteGame() {
-		return null;
+	public GameImpl saveGame(GameImpl game) {
+		gameDAOImpl.saveGame(game);
+		return game;
 	}
 
+	@Override
+	public void deleteGame(long id) {
+		gameDAOImpl.deleteGame(id);
+	}
 
 }

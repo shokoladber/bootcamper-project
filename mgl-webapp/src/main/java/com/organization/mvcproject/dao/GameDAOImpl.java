@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class GameDAOImpl implements GameDAO {
@@ -47,6 +48,14 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
+    public List<GameImpl> findGamesByGenre(String genre) {
+        return games
+                .stream()
+                .filter(game -> game.getGenre().equals(genre))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public GameImpl findGameById(Long gameId){
         for(GameImpl game: games){
             if(gameId.equals(game.getId())){
@@ -66,9 +75,17 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public GameImpl saveGame(GameImpl game) {
+    public void saveGame(GameImpl game) {
+        if(game.getId() != null){
+            for(GameImpl existingGame : games){
+                if (game.getId().equals(existingGame.getId())){
+                    existingGame.setName(game.getName()); //update name of existing game
+                    existingGame.setGenre(game.getGenre()); //update genre of existing game
+                }
+            }
+        }
+        //if game not found, add new game to list
         game.setId(++gameId);
         games.add(game);
-        return game;
     }
 }
