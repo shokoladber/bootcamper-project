@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +25,13 @@ public class RestController {
     public ResponseEntity<Void> createGame(@RequestBody GameImpl game) {
         gameServiceImpl.saveGame(game);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/games/{id}/delete", method = RequestMethod.POST)
+    public ResponseEntity<List<GameImpl>> deleteGame(@PathVariable Long id) {
+        System.out.println(id);
+        gameServiceImpl.deleteGame(id);
+        return new ResponseEntity<>(gameServiceImpl.retrieveAllGames(), HttpStatus.OK);
     }
 
 }

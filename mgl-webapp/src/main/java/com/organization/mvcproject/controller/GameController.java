@@ -42,5 +42,10 @@ public class GameController {
 
 		return new ModelAndView("gamesPage", "command", new GameImpl());
 	}
+	
+	@RequestMapping(value="/games", method = RequestMethod.POST)
+	public ModelAndView deletePage() {
+		return new ModelAndView("gamesPage");
+	}
 
 }

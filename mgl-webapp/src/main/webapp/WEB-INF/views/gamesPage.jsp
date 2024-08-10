@@ -37,7 +37,7 @@
                         <input type="hidden" ng-model="MGL_T1_ctrl.game.id" />
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-2 control-lable text-light" for="name">Name*</label>
+                                <label class="col-md-2 control-label text-light" for="name">Name*</label>
                                 <div class="col-md-7">
                                     <input type="text" ng-model="MGL_T1_ctrl.game.name" id="name" class="name form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
                                     <div class="has-error" ng-show="gameForm.$dirty">
@@ -83,8 +83,8 @@
                             <tr ng-repeat="currentGame in MGL_T1_ctrl.games">
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
-                                <td>
-                                </td>
+                                <td> <button class="btn btn-primary btn-sm" >Select</button> </td>
+                                <td> <button ng-click="MGL_T1_ctrl.deleteGame(currentGame)" class="btn btn-primary btn-sm" >Delete</button> </td>
                             </tr>
                         </tbody>
                     </table>
