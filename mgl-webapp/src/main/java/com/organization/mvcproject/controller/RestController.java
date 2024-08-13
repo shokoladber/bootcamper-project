@@ -29,9 +29,8 @@ public class RestController {
 
     @RequestMapping(value = "/games/{id}/delete", method = RequestMethod.POST)
     public ResponseEntity<List<GameImpl>> deleteGame(@PathVariable Long id) {
-        System.out.println(id);
         gameServiceImpl.deleteGame(id);
-        return new ResponseEntity<>(gameServiceImpl.retrieveAllGames(), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

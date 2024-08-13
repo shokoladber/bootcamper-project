@@ -4,6 +4,7 @@ import com.organization.mvcproject.api.dao.GameDAO;
 import com.organization.mvcproject.model.GameImpl;
 import org.springframework.stereotype.Repository;
 
+import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,11 +68,8 @@ public class GameDAOImpl implements GameDAO {
 
     @Override
     public void deleteGame(Long gameId) {
-        for(GameImpl game: games){
-            if (gameId.equals(game.getId())){
-                games.remove(game);
-            }
-        }
+       GameImpl selectedGame = findGameById(gameId);
+       games.remove(selectedGame);
     }
 
     @Override
