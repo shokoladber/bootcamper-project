@@ -33,8 +33,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading text-light"><span class="lead">Game Registration Form </span></div>
                 <div class="formcontainer">
-                    <form ng-submit="MGL_T1_ctrl.addGame()" name="gameForm" class="form-horizontal">
-                        <input type="hidden" ng-model="MGL_T1_ctrl.game.id" />
+                    <form ng-submit="MGL_T1_ctrl.addGame()" id="gameForm" name="gameForm" class="form-horizontal">
+                        <input type="hidden" id="gameId" ng-model="MGL_T1_ctrl.game.id" />
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class="col-md-2 control-label text-light" for="name">Name*</label>
@@ -60,8 +60,9 @@
                         </div>
 
                         <div class="row">
-                            <div class="form-actions floatRight">
-                                <input type="submit" value="Add" class="btn btn-primary btn-sm">
+                            <div id="buttons" class="form-actions floatRight">
+                                <input ng-if="!gameId.value" type="submit" value="Add" id="add" class="btn btn-primary btn-sm" class="animate-if">
+                                <input ng-if="gameId.value" type="submit" value="Update" id="update" class="btn btn-primary btn-sm" class="animate-if">
                             </div>
                         </div>
                     </form>
@@ -83,7 +84,7 @@
                             <tr ng-repeat="currentGame in MGL_T1_ctrl.games">
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
-                                <td> <button class="btn btn-primary btn-sm" >Select</button> </td>
+                                <td> <button ng-click="MGL_T1_ctrl.selectGame(currentGame)" class="btn btn-primary btn-sm" >Select</button> </td>
                                 <td> <button ng-click="MGL_T1_ctrl.deleteGame(currentGame)" class="btn btn-primary btn-sm" >Delete</button> </td>
                             </tr>
                         </tbody>
