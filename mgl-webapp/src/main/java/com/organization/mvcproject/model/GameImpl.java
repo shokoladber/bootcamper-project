@@ -34,4 +34,15 @@ public class GameImpl implements Game {
 		this.genre = genre;
 	}
 
+	@Override
+	public String toString(){
+		return
+				(
+						"Name: " + this.getName() + "\n" +
+						"Genre: " + this.getGenre() +
+						"ID: " + this.getId()
+
+				);
+	};
+
 }

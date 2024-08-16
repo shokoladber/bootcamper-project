@@ -6,7 +6,7 @@ angular.module('MGL_Task1_app').factory('MGL_Task1_Service', ['$http', function(
 
 		var factory = {
 			fetchAllGames : fetchAllGames,
-			createGame : createGame,
+			saveGame : saveGame,
 			deleteGame : deleteGame
 		};
 
@@ -19,7 +19,7 @@ angular.module('MGL_Task1_app').factory('MGL_Task1_Service', ['$http', function(
 			);
 		}
 
-		function createGame(game) {
+		function saveGame(game) {
 			return $http.post(REST_SERVICE_URI, game).then(function(response) {
 					return response.data;
 				}

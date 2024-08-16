@@ -30,6 +30,15 @@ public class GameServiceImpl implements GameService {
 	}
 
 	@Override
+	public GameImpl retrieveGameByName(String gameName) {
+		GameImpl game = gameDAOImpl.findGameByName(gameName);
+
+		System.out.println("GameSeriveImpl.retrieveGameByName() = " + game);
+
+		return game;
+	}
+
+	@Override
 	public void deleteGame(long id) {
 		gameDAOImpl.deleteGame(id);
 	}

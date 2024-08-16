@@ -12,6 +12,8 @@ public interface GameDAO {
 
     GameImpl findGameById(Long id);
 
+    GameImpl findGameByName(String gameName);
+
     void deleteGame(Long id);
 
     void saveGame(GameImpl game);

@@ -13,6 +13,8 @@ public interface GameService {
 
 	GameImpl saveGame(GameImpl game);
 
+	GameImpl retrieveGameByName(String gameName);
+
 	void deleteGame(long id);
 
 

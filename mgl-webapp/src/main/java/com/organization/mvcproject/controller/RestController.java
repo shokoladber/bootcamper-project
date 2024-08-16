@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
@@ -18,13 +19,16 @@ public class RestController {
 
     @RequestMapping(value = "/gamesLibrary", method = RequestMethod.GET)
     public ResponseEntity<List<GameImpl>> fetchAllGames() {
+
+        System.out.println("Get request to /gamesLibrary");
+
         return new ResponseEntity<>(gameServiceImpl.retrieveAllGames(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/games", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> createGame(@RequestBody GameImpl game) {
+    public ResponseEntity<Void> saveGame(@RequestBody GameImpl game) {
         gameServiceImpl.saveGame(game);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/games/{id}/delete", method = RequestMethod.POST)

@@ -35,17 +35,13 @@ public class GameController {
 
 		return new ModelAndView("reviewDetailPage", "submittedReview", review);
 	}
-
 	
 	@RequestMapping(value = "/games", method = RequestMethod.GET)
 	public ModelAndView game() {
 
+		System.out.println("Get request to /games");
+
 		return new ModelAndView("gamesPage", "command", new GameImpl());
-	}
-	
-	@RequestMapping(value="/games", method = RequestMethod.POST)
-	public ModelAndView deletePage() {
-		return new ModelAndView("gamesPage");
 	}
 
 }

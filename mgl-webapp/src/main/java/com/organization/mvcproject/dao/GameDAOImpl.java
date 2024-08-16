@@ -58,8 +58,22 @@ public class GameDAOImpl implements GameDAO {
 
     @Override
     public GameImpl findGameById(Long gameId){
-        for(GameImpl game: games){
+        for(GameImpl game : games){
             if(gameId.equals(game.getId())){
+                return game;
+            }
+        }
+        return null; //if no game found
+    }
+
+    @Override
+    public GameImpl findGameByName(String gameName){
+        for(GameImpl game : games){
+
+            System.out.println("GaDAOImpl.findGameByName games: " + games);
+            System.out.println("GaDAOImpl.findGameByName game: " + game);
+
+            if(gameName.equals(game.getName())){
                 return game;
             }
         }
@@ -74,15 +88,6 @@ public class GameDAOImpl implements GameDAO {
 
     @Override
     public void saveGame(GameImpl game) {
-        if(game.getId() != null){
-            for(GameImpl existingGame : games){
-                if (game.getId().equals(existingGame.getId())){
-                    existingGame.setName(game.getName()); //update name of existing game
-                    existingGame.setGenre(game.getGenre()); //update genre of existing game
-                }
-            }
-        }
-        //if game not found, add new game to list
         game.setId(++gameId);
         games.add(game);
     }
