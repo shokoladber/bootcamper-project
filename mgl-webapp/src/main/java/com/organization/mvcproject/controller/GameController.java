@@ -26,7 +26,7 @@ public class GameController {
 	public ModelAndView review() {
 		return new ModelAndView("reviewCreatePage", "command", new Review());
 	}
-
+	 
 	@RequestMapping(value = "/addReview", method = RequestMethod.POST)
 	public ModelAndView addReview(Review review, ModelMap model) {
 		if(review.getAuthor().equals("")) {
